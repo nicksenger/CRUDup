@@ -1,0 +1,29 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT\n                refresh_token_hash,\n                origin \n            FROM user_sessions\n            WHERE origin IN (\n                SELECT origin\n                FROM user_sessions\n                WHERE user_id = $1\n                AND refresh_token_hash = $2\n            )\n            ORDER BY created_at DESC\n            LIMIT 1;\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "refresh_token_hash",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "origin",
+        "type_info": "Bpchar"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Bpchar",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "91f647f54f34acb5b602541eaa94ef991d3195fa82f02df5fae1d6e0c702dbd5"
+}

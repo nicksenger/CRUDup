@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  namespace: app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: app-auth:latest
+        imagePullPolicy: Never
+        env:
+        - name: RUST_LOG
+          value: info
+        - name: PEPPER
+          value: Ft5w4S/dzwiGLlfkFybi8w
+        - name: DATABASE_URL
+          value: postgres://yugabyte@yb-tservers:5433/yugabyte
+        - name: CACHE_URI
+          value: tcp://mcrouter-memcached.default.svc:11211
+        - name: SESSION_EXPIRY_MS
+          value: "1800000"
+        - name: REFRESH_EXPIRY_MS
+          value: "86400000"
+        ports:
+        - containerPort: 50051
+          name: grpc
+        livenessProbe:
+          grpc:
+            port: 50051
+          initialDelaySeconds: 5
+          periodSeconds: 10

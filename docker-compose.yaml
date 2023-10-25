@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    ports:
+      - 50051:50051
+    environment:
+      RUST_LOG: info
+      AUTH_SERVICE_URI: http://auth:50051
+  auth:
+    build:
+      context: .
+      dockerfile: Dockerfile.auth
+    environment:
+      SQLX_OFFLINE: true
+      RUST_LOG: info
+      DATABASE_URL: postgres://yugabyte@host.docker.internal/yugabyte
+      PEPPER: Ft5w4S/dzwiGLlfkFybi8w
+      CACHE_URI: tcp://host.docker.internal:11211
+      SESSION_EXPIRY_MS: 1800000
+      REFRESH_EXPIRY_MS: 86400000

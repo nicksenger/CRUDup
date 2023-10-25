@@ -1,0 +1,17 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            INSERT INTO user_sessions (\n                session_token_hash,\n                refresh_token_hash,\n                user_id,\n                origin\n            ) VALUES ($1, $2, $3, $4);\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Varchar",
+        "Varchar",
+        "Bpchar",
+        "Bpchar"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "49e130ae56e7e087cd05f3b2675601dc87f4238c460117507929c894a1ab6669"
+}

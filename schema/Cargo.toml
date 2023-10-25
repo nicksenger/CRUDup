@@ -1,0 +1,15 @@
+[package]
+name = "schema"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+prost = "0.12"
+prost-types = "0.12"
+tokio = "1.33"
+tokio-stream = "0.1"
+tonic = "0.10"
+ulid = "1.1"
+
+[build-dependencies]
+tonic-build = "0.10"

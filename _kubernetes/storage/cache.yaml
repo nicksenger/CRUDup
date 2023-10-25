@@ -1,0 +1,7 @@
+apiVersion: mcrouter.example.com/v1alpha3
+kind: Mcrouter
+metadata:
+  name: mcrouter
+spec:
+  memcached_pool_size: 3
+  pool_setup: sharded

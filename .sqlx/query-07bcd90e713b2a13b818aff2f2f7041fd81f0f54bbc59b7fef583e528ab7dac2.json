@@ -1,0 +1,14 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                DELETE\n                FROM user_sessions\n                WHERE origin=$1;\n                ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Bpchar"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "07bcd90e713b2a13b818aff2f2f7041fd81f0f54bbc59b7fef583e528ab7dac2"
+}

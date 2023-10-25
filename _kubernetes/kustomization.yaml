@@ -1,0 +1,7 @@
+resources:
+- namespace.yaml
+- storage/cache.yaml
+- services/gateway.yaml
+- services/auth.yaml
+- deployments/gateway.yaml
+- deployments/auth.yaml

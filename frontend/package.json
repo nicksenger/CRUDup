@@ -1,0 +1,33 @@
+{
+  "name": "rspack-react-ts-starter",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "gen": "protoc --plugin=\"protoc-gen-ts=\"./node_modules/.bin/protoc-gen-ts\"\" --js_out=\"import_style=commonjs,binary:\"./generated\"\" --ts_out=\"service=grpc-web:\"./generated\"\" --proto_path=\"../schema/proto\" gateway.proto",
+    "dev": "npm run gen && rspack serve",
+    "build": "npm run gen && rspack build"
+  },
+  "dependencies": {
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "google-protobuf": "^3.21.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "@reduxjs/toolkit": "^1.9.7",
+    "@rspack/cli": "latest",
+    "@types/google-protobuf": "^3.15.9",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-loader": "^7.3.3",
+    "protoc-gen-js": "^3.21.2",
+    "react-redux": "^8.1.3",
+    "tailwindcss": "^3.3.5",
+    "ts-protoc-gen": "^0.15.0",
+    "typescript": "^5.0.4"
+  }
+}

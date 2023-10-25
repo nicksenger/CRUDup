@@ -1,0 +1,7 @@
+_kubernetes
+.dockerignore
+docker-compose.yaml
+Dockerfile*
+README.md
+target
+frontend

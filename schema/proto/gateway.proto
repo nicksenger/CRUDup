@@ -1,0 +1,47 @@
+syntax = "proto3";
+package gateway;
+import "google/protobuf/empty.proto";
+
+service Gateway {
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc Refresh(RefreshRequest) returns (RefreshResponse);
+    rpc Logout(LogoutRequest) returns (google.protobuf.Empty);
+}
+
+message RegisterRequest {
+    string username = 1;
+    string password = 2;  
+}
+
+message RegisterResponse {
+    bytes user_id = 1;
+    bytes session_token = 2;
+    bytes refresh_token = 3;
+}
+
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    bytes user_id = 1;
+    bytes session_token = 2;
+    bytes refresh_token = 3;
+}
+
+message RefreshRequest {
+    bytes user_id = 1;
+    bytes refresh_token = 2;
+}
+
+message RefreshResponse {
+    bytes session_token = 1;
+    bytes refresh_token = 2;
+}
+
+message LogoutRequest {
+    bytes user_id = 1;
+    bytes session_token = 2;
+}
